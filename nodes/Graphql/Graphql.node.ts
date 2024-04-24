@@ -1,5 +1,6 @@
 import { IExecuteFunctions } from 'n8n-core';
-
+import dotenv from 'dotenv';
+dotenv.config();
 import {
   IDataObject,
   INodeExecutionData,
@@ -11,23 +12,23 @@ import {
   OptionsWithUri,
 } from 'request';
 
-export class FriendGrid implements INodeType {
+export class Graphql implements INodeType {
   description: INodeTypeDescription = {
-    displayName: 'FriendGrid',
-    name: 'friendGrid',
-    icon: 'file:friendGrid.svg',
+    displayName: 'Graphql',
+    name: 'graphql',
+    icon: 'file:graphql.svg',
     group: ['transform'],
     version: 1,
     subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
     description: 'Consume SendGrid API',
     defaults: {
-      name: 'FriendGrid',
+      name: 'Graphql',
     },
     inputs: ['main'],
     outputs: ['main'],
     credentials: [
       {
-        name: 'friendGridApi',
+        name: 'GraphqlApi',
         required: true,
       },
     ],
@@ -125,6 +126,7 @@ export class FriendGrid implements INodeType {
   };
   // The execute method will go here
   async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
+    console.log('process.env.PORT :>> ', process.env.PORT);
     // Handle data coming from previous nodes
     const items = this.getInputData();
     let responseData;

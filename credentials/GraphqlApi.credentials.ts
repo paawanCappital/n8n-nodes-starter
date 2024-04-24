@@ -5,9 +5,9 @@ import {
   INodeProperties,
 } from 'n8n-workflow';
 
-export class FriendGridApi implements ICredentialType {
-  name = 'friendGridApi';
-  displayName = 'FriendGrid API';
+export class GraphqlApi implements ICredentialType {
+  name = 'graphqlApi';
+  displayName = 'Graphql API';
   properties: INodeProperties[] = [
     {
       displayName: 'API Key',
